@@ -6,12 +6,21 @@
 #define WAGIT_GITCONFIG_H
 namespace WAGit
 {
+    namespace FS = std::filesystem;
+    using Path = FS::path;
+
     class GitConfig
     {
+        int version;
     public:
-        GitConfig()
+        void InitConfig(const Path& path)
         {
+            this->version = 0;
+        }
 
+        int GetVersion()
+        {
+            return this->version;
         }
     };
 }

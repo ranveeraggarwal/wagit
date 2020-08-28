@@ -25,7 +25,7 @@ namespace WAGit
 
     public:
         Repository(const Path& path, bool force = false);
-        Path GetRepoFile(const String& filename);
+        Path GetRepoPath(const String& filename);
     };
 }
 

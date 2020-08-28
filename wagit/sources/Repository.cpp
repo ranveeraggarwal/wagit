@@ -14,10 +14,17 @@ namespace WAGit
         if (!(force || FS::is_directory(this->gitDirectory)))
             throw Exceptions::NotAGitRepositoryException(this->gitDirectory.u8string());
 
-        Path configFile = GetRepoFile("config");
+        Path configFile = GetRepoPath("config");
+        if (!force && !FS::exists(configFile))
+            throw Exceptions::GeneralException("Configuration file missing");
+
+        this->config.InitConfig(configFile);
+
+        if (!force && this->config.GetVersion() != 0)
+            throw Exceptions::GeneralException("Repository Version Not Supported");
     }
 
-    Path Repository::GetRepoFile(const String &filename)
+    Path Repository::GetRepoPath(const String &filename)
     {
         Path path(this->gitDirectory);
         path /= "/";

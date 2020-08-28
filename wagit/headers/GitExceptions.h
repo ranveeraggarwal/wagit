@@ -9,23 +9,32 @@
 #ifndef WAGIT_GITEXCEPTIONS_H
 #define WAGIT_GITEXCEPTIONS_H
 
-namespace WAGit
+namespace WAGit::Exceptions
 {
-    namespace Exceptions
-    {
-        struct NotAGitRepositoryException : public std::exception {
-            std::string exceptionMessage;
+    struct NotAGitRepositoryException : public std::exception {
+        std::string exceptionMessage;
 
-            explicit NotAGitRepositoryException(const std::string& path)
-                    : exceptionMessage("Not a Git repository " + path)
-            {}
+        explicit NotAGitRepositoryException(const std::string& path)
+                : exceptionMessage("Not a Git repository " + path)
+        {}
 
-            [[nodiscard]] const char * what () const noexcept override {
-                return this->exceptionMessage.c_str();
-            }
-        };
+        [[nodiscard]] const char * what () const noexcept override {
+            return this->exceptionMessage.c_str();
+        }
+    };
 
-    }
+    struct GeneralException : public std::exception {
+        std::string exceptionMessage;
+
+        GeneralException(std::string message)
+                : exceptionMessage(std::move(message))
+        {}
+
+        [[nodiscard]] const char * what () const noexcept override {
+            return this->exceptionMessage.c_str();
+        }
+    };
+
 }
 
 #endif //WAGIT_GITEXCEPTIONS_H
