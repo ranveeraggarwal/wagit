@@ -4,6 +4,7 @@
 
 #include <filesystem>
 #include <string>
+#include <vector>
 
 #include "GitConfig.h"
 #include "GitExceptions.h"
@@ -25,7 +26,12 @@ namespace WAGit
 
     public:
         Repository(const Path& path, bool force = false);
-        Path GetRepoPath(const String& filename);
+
+        Path GetRepoPath(const std::vector<String>& filepath);
+        bool GetOrCreateRepoFile(const std::vector<String> &filePath, Path &path, bool mkdir = false);
+        bool GetOrCreateRepoDirectory(const std::vector<String> &dirPath, Path &path, bool mkdir = false);
+
+        Path GetWorkTree();
     };
 }
 
