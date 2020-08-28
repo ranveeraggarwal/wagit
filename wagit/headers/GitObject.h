@@ -5,13 +5,15 @@
 #ifndef WAGIT_GITOBJECT_H
 #define WAGIT_GITOBJECT_H
 
-
-class GitObject {
-    GitObject()
+namespace WAGit
+{
+    class GitObject
     {
+        GitObject()
+        {
 
-    }
-};
-
+        }
+    };
+}
 
 #endif //WAGIT_GITOBJECT_H

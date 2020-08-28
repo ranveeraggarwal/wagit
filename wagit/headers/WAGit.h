@@ -5,4 +5,9 @@
 #ifndef WAGIT_WAGIT_H
 #define WAGIT_WAGIT_H
 
+namespace WAGit
+{
+
+}
+
 #endif //WAGIT_WAGIT_H

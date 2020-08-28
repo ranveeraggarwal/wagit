@@ -2,24 +2,31 @@
 // Created by Ranveer Aggarwal on 27/08/20.
 //
 
-#include "FileSystem.h"
+#include <filesystem>
 #include <string>
+
+#include "GitConfig.h"
+#include "GitExceptions.h"
 
 #ifndef WAGIT_REPOSITORY_H
 #define WAGIT_REPOSITORY_H
 
-
-class Repository
+namespace WAGit
 {
-    FileSystem workTree;
-    FileSystem gitDirectory;
-    int config;  // ToDO: Make a legit config object
+    namespace FS = std::filesystem;
+    using Path = FS::path;
+    using String = std::string;
 
-    Repository(std::string path)
+    class Repository
     {
+        Path workTree;
+        Path gitDirectory;
+        GitConfig config;
 
-    }
-};
-
+    public:
+        Repository(const Path& path, bool force = false);
+        Path GetRepoFile(const String& filename);
+    };
+}
 
 #endif //WAGIT_REPOSITORY_H
