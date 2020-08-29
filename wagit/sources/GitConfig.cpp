@@ -15,25 +15,25 @@ namespace WAGit
             if (config.has("core"))
             {
                 if (config["core"].has("repositoryformatversion"))
-                    this->version = std::stoi(config["core"]["repositoryformatversion"]);
+                    this->version_ = std::stoi(config["core"]["repositoryformatversion"]);
                 if (config["core"].has("filemode"))
-                    this->fileMode = config["core"]["filemode"] == "true";
+                    this->fileMode_ = config["core"]["filemode"] == "true";
                 if (config["core"].has("bare"))
-                    this->bare = config["core"]["bare"] == "true";
+                    this->bare_ = config["core"]["bare"] == "true";
             }
         }
     }
 
     long GitConfig::GetVersion() const
     {
-        return this->version;
+        return this->version_;
     }
 
     bool GitConfig::GetFileMode() const {
-        return this->fileMode;
+        return this->fileMode_;
     }
 
     bool GitConfig::IsBare() const {
-        return this->bare;
+        return this->bare_;
     }
 }

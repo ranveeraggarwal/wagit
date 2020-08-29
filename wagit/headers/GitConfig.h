@@ -20,10 +20,6 @@ namespace WAGit
      */
     class GitConfig
     {
-        long version = 0;
-        bool fileMode = false;
-        bool bare = false;
-
     public:
         /*!
          * Initializes the configuration based on ini file
@@ -34,6 +30,11 @@ namespace WAGit
         long GetVersion() const;
         bool GetFileMode() const;
         bool IsBare() const;
+
+    private:
+        long version_ = 0;
+        bool fileMode_ = false;
+        bool bare_ = false;
     };
 }
 

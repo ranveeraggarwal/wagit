@@ -71,18 +71,18 @@ namespace WAGit
         /*!
         * WorkTree is the project directory where the git repository will be
         */
-        Path workTree;
+        Path workTree_;
 
         /*!
          * GitDirectory is the .git folder which will store all things git
          */
-        Path gitDirectory;
+        Path gitDirectory_;
 
         /*!
          * config is the configuration file (an ini file), that will be
          * .git/config
          */
-        GitConfig config;
+        GitConfig config_;
     };
 }
 

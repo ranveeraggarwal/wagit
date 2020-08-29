@@ -8,25 +8,25 @@ namespace WAGit
 {
     Repository::Repository(const Path &path, bool force)
     {
-        this->workTree = path;
-        this->gitDirectory = path / ".git";
+        this->workTree_ = path;
+        this->gitDirectory_ = path / ".git";
 
-        if (!(force || FS::is_directory(this->gitDirectory)))
-            throw Exceptions::PathException("Not a Git repository", this->gitDirectory);
+        if (!(force || FS::is_directory(this->gitDirectory_)))
+            throw Exceptions::PathException("Not a Git repository", this->gitDirectory_);
 
         Path configFile = GetRepoPath({"config"});
         if (!force && !FS::exists(configFile))
             throw Exceptions::GeneralException("Configuration file missing");
 
-        this->config.InitConfig(configFile);
+        this->config_.InitConfig(configFile);
 
-        if (!force && this->config.GetVersion() != 0)
+        if (!force && this->config_.GetVersion() != 0)
             throw Exceptions::GeneralException("Repository Version Not Supported");
     }
 
     Path Repository::GetRepoPath(const std::vector<String> &pathToFile)
     {
-        Path path(this->gitDirectory);
+        Path path(this->gitDirectory_);
         for (const auto& subPath: pathToFile)
         {
              path /= subPath;
@@ -66,6 +66,6 @@ namespace WAGit
     }
 
     Path Repository::GetWorkTree() {
-        return this->workTree;
+        return this->workTree_;
     }
 }
