@@ -2,6 +2,10 @@
 // Created by Ranveer Aggarwal on 28/08/20.
 //
 
+#include <filesystem>
+
+#include "../includes/INIReader.h"
+
 #ifndef WAGIT_GITCONFIG_H
 #define WAGIT_GITCONFIG_H
 namespace WAGit
@@ -11,17 +15,14 @@ namespace WAGit
 
     class GitConfig
     {
-        int version;
+        long version;
+        bool fileMode;
+        bool bare;
     public:
-        void InitConfig(const Path& path)
-        {
-            this->version = 0;
-        }
-
-        int GetVersion()
-        {
-            return this->version;
-        }
+        void InitConfig(const Path& path);
+        long GetVersion() const;
+        bool GetFileMode() const;
+        bool IsBare() const;
     };
 }
 
