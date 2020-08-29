@@ -12,7 +12,7 @@ namespace WAGit
         this->gitDirectory = path / ".git";
 
         if (!(force || FS::is_directory(this->gitDirectory)))
-            throw Exceptions::NotAGitRepositoryException(this->gitDirectory.u8string());
+            throw Exceptions::PathException("Not a Git repository", this->gitDirectory);
 
         Path configFile = GetRepoPath({"config"});
         if (!force && !FS::exists(configFile))
@@ -43,8 +43,7 @@ namespace WAGit
             path = GetRepoPath(filePath);
             return true;
         }
-        else
-            return false;
+        return false;
     }
 
     bool Repository::GetOrCreateRepoDirectory(const std::vector<String> &dirPath, Path &path, bool mkdir) {
@@ -55,7 +54,7 @@ namespace WAGit
             if (FS::is_directory(path))
                 return true;
             else
-                throw Exceptions::GeneralException("Not a directory");
+                throw Exceptions::PathException("Not a directory", path);
         }
 
         if (mkdir)
@@ -63,10 +62,7 @@ namespace WAGit
             FS::create_directories(path);
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     Path Repository::GetWorkTree() {

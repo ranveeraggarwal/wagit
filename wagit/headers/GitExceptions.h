@@ -3,6 +3,7 @@
 //
 
 #include <exception>
+#include <filesystem>
 #include <string>
 #include <utility>
 
@@ -11,26 +12,37 @@
 
 namespace WAGit::Exceptions
 {
-    struct NotAGitRepositoryException : public std::exception {
-        std::string exceptionMessage;
+    namespace FS = std::filesystem;
 
-        explicit NotAGitRepositoryException(const std::string& path)
-                : exceptionMessage("Not a Git repository " + path)
+    using Exception = std::exception;
+    using Path = FS::path;
+    using String = std::string;
+
+    /*!
+     * Used for anything file/directory related
+     */
+    struct PathException : public Exception {
+        String exceptionMessage;
+
+        explicit PathException(const String &message, const Path &path)
+                : exceptionMessage(message + " " + path.u8string())
         {}
 
-        [[nodiscard]] const char * what () const noexcept override {
+        [[nodiscard]] const char * what () const noexcept override
+        {
             return this->exceptionMessage.c_str();
         }
     };
 
-    struct GeneralException : public std::exception {
-        std::string exceptionMessage;
+    struct GeneralException : public Exception {
+        String exceptionMessage;
 
-        GeneralException(std::string message)
+        explicit GeneralException(String message)
                 : exceptionMessage(std::move(message))
         {}
 
-        [[nodiscard]] const char * what () const noexcept override {
+        [[nodiscard]] const char * what () const noexcept override
+        {
             return this->exceptionMessage.c_str();
         }
     };

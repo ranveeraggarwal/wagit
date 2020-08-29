@@ -6,10 +6,11 @@
 #include "headers/WAGit.h"
 
 namespace FS = std::filesystem;
-using String = std::string;
-using Path = FS::path;
 
-/*
+using Path = FS::path;
+using String = std::string;
+
+/*!
  * Temporary function to return a string for unimplemented commands.
  */
 std::string CommandNotImplementedWarning(const String& command)

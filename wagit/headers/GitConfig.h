@@ -12,8 +12,12 @@
 namespace WAGit
 {
     namespace FS = std::filesystem;
+
     using Path = FS::path;
 
+    /*!
+     * The repository's config
+     */
     class GitConfig
     {
         long version = 0;
@@ -21,7 +25,12 @@ namespace WAGit
         bool bare = false;
 
     public:
+        /*!
+         * Initializes the configuration based on ini file
+         * @param path the path to the ini file
+         */
         void InitConfig(const Path& path);
+
         long GetVersion() const;
         bool GetFileMode() const;
         bool IsBare() const;
