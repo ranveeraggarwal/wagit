@@ -8,10 +8,20 @@ namespace WAGit
 {
     void GitConfig::InitConfig(const Path &path)
     {
-        INIReader configReader((FS::absolute(path)).u8string());
-        this->version = configReader.GetInteger("core", "repositoryformatversion", 0);
-        this->fileMode = configReader.GetBoolean("core", "filemode", false);
-        this->bare = configReader.GetBoolean("core", "bare", false);
+        mINI::INIFile iniFile((FS::absolute(path)).u8string());
+        mINI::INIStructure config;
+        if (iniFile.read(config))
+        {
+            if (config.has("core"))
+            {
+                if (config["core"].has("repositoryformatversion"))
+                    this->version = std::stoi(config["core"]["repositoryformatversion"]);
+                if (config["core"].has("filemode"))
+                    this->fileMode = config["core"]["filemode"] == "true";
+                if (config["core"].has("bare"))
+                    this->bare = config["core"]["bare"] == "true";
+            }
+        }
     }
 
     long GitConfig::GetVersion() const

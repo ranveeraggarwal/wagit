@@ -4,7 +4,8 @@
 
 #include <filesystem>
 
-#include "../includes/INIReader.h"
+#define MINI_CASE_SENSITIVE
+#include "../includes/ini.h"
 
 #ifndef WAGIT_GITCONFIG_H
 #define WAGIT_GITCONFIG_H
@@ -15,9 +16,10 @@ namespace WAGit
 
     class GitConfig
     {
-        long version;
-        bool fileMode;
-        bool bare;
+        long version = 0;
+        bool fileMode = false;
+        bool bare = false;
+
     public:
         void InitConfig(const Path& path);
         long GetVersion() const;

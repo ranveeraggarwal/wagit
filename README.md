@@ -28,7 +28,7 @@ Remember to clean up the submodule directory after you're done, by running
 
 And move back to the root directory. You'll only have to do this once.
 
-#### Inih
+#### mINI
 I have added the header for this in the project itself - no installation needed.
 
 # Reading Material

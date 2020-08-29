@@ -1,0 +1,8 @@
+[submodule "dependencies/argh"]
+	path = dependencies/argh
+	url = https://github.com/adishavit/argh.git
+	branch = master
+[submodule "dependencies/mINI"]
+	path = dependencies/mINI
+	url = https://github.com/pulzed/mINI.git
+	branch = master
