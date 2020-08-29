@@ -24,10 +24,10 @@ namespace WAGit
             throw Exceptions::GeneralException("Repository Version Not Supported");
     }
 
-    Path Repository::GetRepoPath(const std::vector<String> &filepath)
+    Path Repository::GetRepoPath(const std::vector<String> &pathToFile)
     {
         Path path(this->gitDirectory);
-        for (const auto& subPath: filepath)
+        for (const auto& subPath: pathToFile)
         {
              path /= subPath;
         }
