@@ -1,11 +1,19 @@
+#include <filesystem>
 #include <iostream>
 #include <string>
-#include "argh.h"
 
-/*
+#include "argh.h"
+#include "headers/WAGit.h"
+
+namespace FS = std::filesystem;
+
+using Path = FS::path;
+using String = std::string;
+
+/*!
  * Temporary function to return a string for unimplemented commands.
  */
-std::string CommandNotImplementedWarning(const std::string& command)
+std::string CommandNotImplementedWarning(const String& command)
 {
     return "git " + command + " : Implementation Pending";
 }
@@ -40,7 +48,8 @@ int main(int, char* argv[]) {
     }
     else if (command == "init")
     {
-        std::cout << CommandNotImplementedWarning(command) << std::endl;
+        Path repoPath(cmdl[2]);
+        WAGit::CreateRepository(repoPath);
     }
     else if (command == "log")
     {
