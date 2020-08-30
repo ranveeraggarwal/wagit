@@ -31,7 +31,7 @@ namespace WAGit
          * @param force Force create repository. We'll be using this during
          * init as well
          */
-        Repository(const Path& path, bool force = false);
+        Repository(const Path &path, bool force = false);
 
         /*!
          * Gets the actual path to a corresponding file inside the .git directory
@@ -41,7 +41,7 @@ namespace WAGit
          * a part of the vector
          * @return the path to the file
          */
-        Path GetRepoPath(const std::vector<String>& pathToFile);
+        Path GetRepoPath(const std::vector<String> &pathToFile);
 
         /*!
          * ToDo: Find a better name for this function.

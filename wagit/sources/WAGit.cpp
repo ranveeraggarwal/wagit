@@ -6,7 +6,7 @@
 
 namespace WAGit
 {
-    Repository CreateRepository(const Path& path)
+    Repository CreateRepository(const Path &path)
     {
         Repository repository(path, true);
 

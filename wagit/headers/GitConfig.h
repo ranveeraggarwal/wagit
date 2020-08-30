@@ -25,7 +25,7 @@ namespace WAGit
          * Initializes the configuration based on ini file
          * @param path the path to the ini file
          */
-        void InitConfig(const Path& path);
+        void InitConfig(const Path &path);
 
         long GetVersion() const;
         bool GetFileMode() const;
