@@ -8,7 +8,7 @@ namespace WAGit
 {
     void GitConfig::InitConfig(const Path &path)
     {
-        mINI::INIFile iniFile((FS::absolute(path)).u8string());
+        mINI::INIFile iniFile((FS::absolute(path)).string());
         mINI::INIStructure config;
         if (iniFile.read(config))
         {
