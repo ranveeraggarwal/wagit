@@ -25,7 +25,7 @@ namespace WAGit::Exceptions
         String exceptionMessage;
 
         explicit PathException(String message, const Path &path)
-                : exceptionMessage(std::move(message) + " " + path.u8string())
+                : exceptionMessage(std::move(message) + " " + path.string())
         {}
 
         [[nodiscard]] const char * what () const noexcept override

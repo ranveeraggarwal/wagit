@@ -172,3 +172,8 @@ Temporary Items
 # Custom ignores
 .idea/
 wagit/.idea/
+wagit/CMakeCache.txt
+wagit/CMakeFiles/
+wagit/Makefile
+wagit/cmake_install.cmake
+wagit/wagit
